@@ -1,59 +1,78 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
-</script>
-
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<script></script>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+    <h3>oi, meu nome é</h3>
+    <h1>Gabriel Duarte</h1>
+    <p>sou estudante de programação e aqui mostro algumas 
+        tecnologias que tenho conhecimento e familiaridade</p>
 </section>
+<main>
+    <!-- <h3>minha formação acadêmica:</h3> -->
+</main>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        min-height: 100vh;
+    }
 
-	h1 {
-		width: 100%;
-	}
+    h1, h3, p{
+        color: white;
+        margin: 0;
+    }
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+    h1 {
+        font-size: 4em;
+        
+    }
+    h3 {
+        font-size: 2em;
+        font-family: 'Alexandria';
+        font-weight: 100;
+        color: rgb(152, 97, 255);
+    }
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+    p {
+        margin-top: 2em;
+        max-width: 30em;
+    }
+
+    main {
+        color: white !important;
+    }
+
+    
+
+    /* section div {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        margin-top: 5em;
+    } */
+
+
+
+    @media(max-width: 480px) {
+        section {
+            padding: 10em 0;
+            margin: 0;
+            align-items: flex-start;
+            justify-content: center;
+            height: auto;
+            min-height: auto;
+        }
+
+        section h3{
+            font-size: 1.2em;
+            
+        }
+
+        section h1{
+            font-size: 2em;
+            margin-top: .8em;
+        }
+    }
 </style>

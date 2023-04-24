@@ -1,53 +1,54 @@
 <script>
-	import Header from './Header.svelte';
-	import './styles.css';
+    import Header from './Header.svelte'
 </script>
 
-<div class="app">
-	<Header />
+<Header/>
 
-	<main>
-		<slot />
-	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+<div class="body">
+    <main class="main">
+        <slot/>
+    </main>
 </div>
 
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
+    .body {
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
 
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+    .main {
+        padding: 0 150px;
+        margin: 0 150px;
+        min-height: 100vh;
+    }
 
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
+    @media (max-width: 1080px) {
+        .main {
+            padding: 0 100px;
+            margin: 0 5em;
+        }
+    }
 
-	footer a {
-		font-weight: bold;
-	}
+    @media (max-width: 800px) {
+        .main {
+            padding: 0 50px;
+            margin: 0 4em;
+        }
+    }
 
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
+    @media(max-width: 480px) {
+        .main {
+            padding: 0 25px;
+            margin: 0;
+        }
+    }
+
+    /* .section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        min-height: 100vh;
+    } */
 </style>

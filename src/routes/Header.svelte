@@ -1,129 +1,128 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import { fly } from 'svelte/transition';
+	let visible = true;
+
+    $: innerWidth = 0;
+
+    // window.onscroll = function() {scrollFunction()}
+
+    // let sticky = document.getElementById('header')?.offsetTop
+
+    // function scrollFunction() {
+    //     if (window.pageYOffset > sticky) {
+    //         document.getElementById('header')?.classList.add("sticky");
+    //     }
+    //     else {
+    //         document.getElementById('header')?.classList.remove('sticky')
+    //     }
+    // }
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+<svelte:window bind:innerWidth />
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
+<header id="header">
+    <h1>G</h1>
+    {#if innerWidth > 480}
+        <ol>
+            <li>
+                <a href="/">
+                    <h1>início</h1>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="/">
+                    <h1>experiências</h1>
+                </a>
+            </li> -->
+            <li>
+                <a href="/projetos">
+                    <h1>projetos</h1>
+                </a>
+            </li>
+        </ol>
+    {:else}
+        <div class="hamburger">
+            <a href="/">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    {/if}
 </header>
 
+
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
+    header {
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        max-height: 5em;
+        position: relative;
+        box-shadow: 0px 2px 1px 0 rgb(152, 97, 255);
+    }
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+    .sticky {
+        position: fixed;
+        top: 0;
+    }
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
+    header h1 {
+        margin: .5em .8em;
+    }
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
+    ol {
+        display: flex;
+        padding: 0;
+        align-items: center;
+    }
 
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
+    ol li {
+        /* list-style: none; */
+        margin: 0 1.5em;
+        z-index: 1;
+    }
 
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
+    ol li a h1:hover {
+        /* background-color: red; */
+        color: rgb(152, 97, 255);
+        transition: .3s;
+    }
 
-	path {
-		fill: var(--background);
-	}
+    ol li::marker {
+        color: rgb(152, 97, 255);
+        font-size: 1.2em;
+    }
 
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
+    ol li a {
+       text-decoration: none;
+       color: white; 
+    }
 
-	li {
-		position: relative;
-		height: 100%;
-	}
+    ol li h1 {
+        margin: 0;
+        font-size: 1.25em;
+    }
 
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
+    @media (max-width: 480px) {
+        header {
+            padding: 0 25px;
+        }
 
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
+        header h1 {
+            margin: .5em 0;
+        }
 
-	a:hover {
-		color: var(--color-theme-1);
-	}
+        .hamburger {
+            height: 3em;
+            width: 3em;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            margin: .75em 0;
+        }
+
+        .hamburger i {
+            font-size: 1.5em;
+        }
+    }
 </style>
