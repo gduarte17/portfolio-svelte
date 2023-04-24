@@ -23,8 +23,7 @@
 
 <header id="header">
     <h1>G</h1>
-    {#if innerWidth > 480}
-        <ol>
+    <ol>
             <li>
                 <a href="/">
                     <h1>início</h1>
@@ -41,13 +40,6 @@
                 </a>
             </li>
         </ol>
-    {:else}
-        <div class="hamburger">
-            <a href="/">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-    {/if}
 </header>
 
 
