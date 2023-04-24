@@ -40,4 +40,13 @@
         margin: 1rem;
         font-size: .875rem;
     }
+    
+    @media (max-width: 480px) {
+        .main{
+            margin-bottom: 5rem;
+        }
+        .main div {
+            display: unset;
+        }
+    }
 </style>
